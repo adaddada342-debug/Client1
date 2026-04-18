@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/ai_studio_code%20(1).html"
+      "destination": "/ai_studio_code%20%281%29.html"
     }
   ]
 }
