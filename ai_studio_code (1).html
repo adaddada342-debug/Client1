@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vassilios Pana | Barber in Ashburn, Virginia</title>
+    <meta name="description" content="Vassilios Pana is a barber in Ashburn, Virginia. Book your cut online.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090909;
+            --panel: rgba(19, 19, 19, 0.88);
+            --text: #f5f1e8;
+            --muted: #b4aa97;
+            --muted-strong: #d2c8b8;
+            --gold: #c9a45d;
+            --gold-bright: #ebc982;
+            --line: rgba(255, 255, 255, 0.08);
+            --shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+            --radius-lg: 32px;
+            --radius-md: 22px;
+            --container: 1180px;
+            --font-body: 'Manrope', sans-serif;
+            --font-display: 'Cormorant Garamond', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background:
+                radial-gradient(circle at top left, rgba(201, 164, 93, 0.16), transparent 30%),
+                radial-gradient(circle at top right, rgba(201, 164, 93, 0.08), transparent 20%),
+                linear-gradient(180deg, #050505 0%, #0b0b0b 30%, #090909 100%);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .site-shell {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .site-shell::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 90px 90px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 88%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .section {
+            padding: 112px 0;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-size: 0.82rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+        }
+
+        .section-tag::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 48px;
+        }
+
+        .section-heading h2,
+        .about-copy h2,
+        .faq-panel h3,
+        .cta-section h2 {
+            font-family: var(--font-display);
+            line-height: 0.96;
+            letter-spacing: -0.03em;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.6rem, 5vw, 4.5rem);
+            margin-bottom: 16px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 620px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-height: 58px;
+            padding: 0 28px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 0.98rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            color: #14100a;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+            box-shadow: 0 16px 40px rgba(201, 164, 93, 0.28);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 44px rgba(201, 164, 93, 0.38);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(201, 164, 93, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            padding: 18px 0;
+            background: linear-gradient(180deg, rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0));
+            backdrop-filter: blur(10px);
+        }
+
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 14px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            background: rgba(8, 8, 8, 0.62);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .brand-lockup {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-mark {
+            font-size: 0.75rem;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: var(--gold-bright);
+        }
+
+        .brand-name {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: end;
+            padding: 144px 0 72px;
+            background:
+                linear-gradient(180deg, rgba(5, 5, 5, 0.38) 0%, rgba(5, 5, 5, 0.62) 45%, rgba(5, 5, 5, 0.94) 100%),
+                linear-gradient(120deg, rgba(0, 0, 0, 0.82) 10%, rgba(0, 0, 0, 0.34) 50%, rgba(0, 0, 0, 0.82) 100%),
+                url('Images/Good haircut3.png') center 18% / cover no-repeat;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 220px;
+            background: linear-gradient(180deg, rgba(9, 9, 9, 0) 0%, rgba(9, 9, 9, 1) 100%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, 360px);
+            gap: 36px;
+            align-items: end;
+        }
+
+        .hero-copy {
+            max-width: 760px;
+            animation: riseIn 0.9s ease both;
+        }
+
+        .eyebrow,
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(16px);
+        }
+
+        .eyebrow {
+            gap: 10px;
+            margin-bottom: 22px;
+            padding: 9px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted-strong);
+        }
+
+        .eyebrow span {
+            color: var(--gold-bright);
+        }
+
+        .hero h1 {
+            max-width: 860px;
+            font-family: var(--font-display);
+            font-size: clamp(4.2rem, 9vw, 7.6rem);
+            line-height: 0.86;
+            letter-spacing: -0.045em;
+            margin-bottom: 20px;
+            text-wrap: balance;
+        }
+
+        .hero p {
+            max-width: 620px;
+            color: var(--muted-strong);
+            font-size: clamp(1.05rem, 2.4vw, 1.28rem);
+            margin-bottom: 28px;
+        }
+
+        .hero-trust,
+        .hero-actions,
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .hero-trust {
+            margin-bottom: 34px;
+        }
+
+        .trust-pill {
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .trust-pill strong,
+        .stat-card strong,
+        .contact-line small,
+        .about-panel h3 {
+            color: var(--gold-bright);
+        }
+
+        .trust-pill strong {
+            font-size: 1rem;
+        }
+
+        .hero-card,
+        .stat-card,
+        .service-card,
+        .gallery-wrap,
+        .about-copy,
+        .about-panel,
+        .faq-panel,
+        details,
+        .cta-section {
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card {
+            position: relative;
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(25, 25, 25, 0.9), rgba(13, 13, 13, 0.92));
+            backdrop-filter: blur(18px);
+            animation: riseIn 1.1s ease 0.15s both;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: 1px;
+            border-radius: calc(var(--radius-lg) - 1px);
+            border: 1px solid rgba(201, 164, 93, 0.12);
+            pointer-events: none;
+        }
+
+        .hero-card-label {
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.24em;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--gold-bright);
+        }
+
+        .hero-card h2 {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            line-height: 0.94;
+            margin-bottom: 10px;
+        }
+
+        .hero-card p,
+        .service-card p,
+        .stat-card p,
+        .faq-answer,
+        .cta-section p,
+        .about-list span,
+        .contact-line span + span {
+            color: var(--muted);
+        }
+
+        .hero-card p {
+            margin-bottom: 20px;
+            font-size: 0.96rem;
+        }
+
+        .hero-card ul,
+        .about-list,
+        .faq-list,
+        .contact-lines {
+            list-style: none;
+            display: grid;
+        }
+
+        .hero-card ul {
+            gap: 12px;
+        }
+
+        .hero-card li,
+        .about-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .hero-card li {
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--muted-strong);
+            font-size: 0.95rem;
+        }
+
+        .hero-card li strong,
+        .about-list strong,
+        .contact-line span {
+            color: var(--text);
+        }
+
+        .stats-grid,
+        .services-grid,
+        .about-grid,
+        .faq-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .stat-card,
+        .service-card,
+        .about-copy,
+        .about-panel,
+        .faq-panel {
+            border-radius: var(--radius-md);
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+                rgba(17, 17, 17, 0.86);
+        }
+
+        .stat-card {
+            padding: 28px;
+        }
+
+        .stat-card strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 2.1rem;
+            line-height: 1;
+        }
+
+        .stat-card h3,
+        .service-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 290px;
+            padding: 28px;
+            background:
+                linear-gradient(180deg, rgba(201, 164, 93, 0.08), transparent 38%),
+                rgba(17, 17, 17, 0.88);
+            transition: transform 0.28s ease, border-color 0.28s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(201, 164, 93, 0.38);
+        }
+
+        .service-index {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 164, 93, 0.28);
+            background: rgba(201, 164, 93, 0.1);
+            color: var(--gold-bright);
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .service-card p {
+            font-size: 0.96rem;
+            max-width: 240px;
+        }
+
+        .service-tag {
+            position: absolute;
+            right: 24px;
+            bottom: 22px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .gallery-wrap {
+            padding: 28px;
+            border-radius: 36px;
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+                rgba(10, 10, 10, 0.88);
+        }
+
+        .gallery-simple,
+        .gallery-pairs {
+            display: grid;
+            gap: 16px;
+        }
+
+        .gallery-simple {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-bottom: 28px;
+        }
+
+        .gallery-pairs {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .gallery-item,
+        .pair-card {
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(14, 14, 14, 0.92);
+            overflow: hidden;
+        }
+
+        .gallery-item img,
+        .pair-shot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item {
+            min-height: 420px;
+        }
+
+        .gallery-item:hover img,
+        .pair-shot:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption,
+        .pair-labels {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 14px 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .pair-images {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .pair-shot {
+            overflow: hidden;
+            border-radius: 18px;
+            min-height: 320px;
+            background: #111;
+        }
+
+        .about-grid,
+        .faq-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .about-copy,
+        .about-panel,
+        .faq-panel {
+            padding: 34px;
+            border-radius: var(--radius-lg);
+        }
+
+        .about-copy h2 {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            margin-bottom: 18px;
+        }
+
+        .about-copy p,
+        .faq-panel p {
+            color: var(--muted-strong);
+            margin-bottom: 18px;
+        }
+
+        .about-quote {
+            margin-top: 24px;
+            padding: 18px 20px;
+            border-left: 3px solid var(--gold);
+            background: rgba(201, 164, 93, 0.08);
+            color: var(--text);
+        }
+
+        .about-panel h3 {
+            margin-bottom: 18px;
+            font-size: 1.16rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .about-list {
+            gap: 18px;
+        }
+
+        .about-list li {
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-direction: column;
+        }
+
+        .about-list li:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .about-list strong {
+            margin-bottom: 4px;
+            font-size: 1.03rem;
+        }
+
+        .faq-list {
+            gap: 14px;
+        }
+
+        details {
+            border-radius: 22px;
+            border: 1px solid var(--line);
+            background: rgba(14, 14, 14, 0.88);
+            overflow: hidden;
+        }
+
+        summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            color: var(--gold-bright);
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        details[open] summary::after {
+            content: "-";
+        }
+
+        .faq-answer {
+            padding: 0 24px 22px;
+            font-size: 0.96rem;
+        }
+
+        .faq-panel {
+            border: 1px solid rgba(201, 164, 93, 0.18);
+            background:
+                linear-gradient(180deg, rgba(201, 164, 93, 0.14), rgba(201, 164, 93, 0.02)),
+                rgba(14, 14, 14, 0.92);
+        }
+
+        .faq-panel h3 {
+            font-size: 2.3rem;
+            margin-bottom: 12px;
+        }
+
+        .faq-panel p {
+            margin-bottom: 22px;
+        }
+
+        .contact-lines {
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .contact-line {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 15px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-line small {
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .contact-line span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            padding: 38px;
+            border-radius: 36px;
+            border: 1px solid rgba(201, 164, 93, 0.18);
+            background:
+                radial-gradient(circle at top right, rgba(201, 164, 93, 0.24), transparent 30%),
+                linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(10, 10, 10, 0.98));
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 14px;
+        }
+
+        .cta-section p {
+            max-width: 640px;
+            margin: 0 auto 28px;
+            font-size: 1.05rem;
+        }
+
+        .footer {
+            padding: 34px 0 110px;
+            color: rgba(255, 255, 255, 0.58);
+        }
+
+        .footer-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.92rem;
+        }
+
+        .mobile-bar {
+            position: fixed;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            z-index: 30;
+            display: none;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(8, 8, 8, 0.9);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(18px);
+        }
+
+        .mobile-bar .btn {
+            flex: 1;
+            min-height: 54px;
+            padding: 0 18px;
+            font-size: 0.86rem;
+            letter-spacing: 0.08em;
+        }
+
+        .reveal {
+            animation: riseIn 0.8s ease both;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1120px) {
+            .hero-grid,
+            .about-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .gallery-simple,
+            .gallery-pairs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .section {
+                padding: 88px 0;
+            }
+
+            .container {
+                width: min(var(--container), calc(100% - 28px));
+            }
+
+            .site-header {
+                padding: 12px 0;
+            }
+
+            .header-bar {
+                padding: 14px 16px;
+            }
+
+            .brand-name {
+                font-size: 1.6rem;
+            }
+
+            .site-header .btn {
+                display: none;
+            }
+
+            .hero {
+                align-items: end;
+                padding: 124px 0 56px;
+                background-position: center 20%;
+            }
+
+            .hero h1 {
+                font-size: clamp(3.4rem, 15vw, 5.4rem);
+            }
+
+            .hero-actions,
+            .cta-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stats-grid,
+            .services-grid,
+            .gallery-simple,
+            .gallery-pairs {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item,
+            .pair-shot {
+                min-height: 420px;
+            }
+
+            .gallery-wrap,
+            .cta-section {
+                padding: 20px;
+            }
+
+            .faq-panel,
+            .about-copy,
+            .about-panel {
+                padding: 26px;
+            }
+
+            .mobile-bar {
+                display: flex;
+            }
+
+            .footer {
+                padding-bottom: 128px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .hero {
+                min-height: 92vh;
+            }
+
+            .eyebrow,
+            .trust-pill {
+                font-size: 0.78rem;
+            }
+
+            .hero-card {
+                padding: 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 2.8rem;
+            }
+
+            .footer-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="site-header">
+            <div class="container">
+                <div class="header-bar">
+                    <div class="brand-lockup">
+                        <span class="brand-mark">vpana_cutz</span>
+                        <span class="brand-name">Vassilios Pana</span>
+                    </div>
+                    <a class="btn btn-primary" href="https://tinyurl.com/vpcutz" target="_blank" rel="noreferrer">Book</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-grid">
+                        <div class="hero-copy">
+                            <div class="eyebrow">DMV Barber <span>//</span> Ashburn, Virginia</div>
+                            <h1>Vassilios Pana</h1>
+                            <p>Clean cuts. Sharp fades.</p>
+                            <div class="hero-trust">
+                                <div class="trust-pill"><strong>1,120+</strong> on Instagram</div>
+                                <div class="trust-pill"><strong>Ashburn, VA</strong> based</div>
+                                <div class="trust-pill"><strong>Booksy</strong> to book</div>
+                            </div>
+                            <div class="hero-actions">
+                                <a class="btn btn-primary" href="https://tinyurl.com/vpcutz" target="_blank" rel="noreferrer">Book</a>
+                                <a class="btn btn-secondary" href="tel:5715771157">Call 571-577-1157</a>
+                            </div>
+                        </div>
+
+                        <aside class="hero-card" aria-label="Why book with Vassilios">
+                            <span class="hero-card-label">Info</span>
+                            <h2>Book your cut.</h2>
+                            <p>Easy booking. Clean work.</p>
+                            <ul>
+                                <li><span>What I do</span> <strong>Fades, cuts, beard trims</strong></li>
+                                <li><span>Location</span> <strong>Ashburn, Virginia</strong></li>
+                                <li><span>How to book</span> <strong>Use the Booksy link</strong></li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="stats-grid reveal">
+                        <article class="stat-card">
+                            <strong>1,120+</strong>
+                            <h3>On Instagram</h3>
+                            <p>Posting recent work and staying active.</p>
+                        </article>
+                        <article class="stat-card">
+                            <strong>DMV</strong>
+                            <h3>Ashburn</h3>
+                            <p>Based in Ashburn, Virginia.</p>
+                        </article>
+                        <article class="stat-card">
+                            <strong>Clean</strong>
+                            <h3>Simple</h3>
+                            <p>Good cuts. No extra talk.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="section-heading reveal">
+                        <span class="section-tag">Services</span>
+                        <h2>Services</h2>
+                        <p>Simple lineup.</p>
+                    </div>
+                    <div class="services-grid reveal">
+                        <article class="service-card">
+                            <span class="service-index">01</span>
+                            <h3>Haircut</h3>
+                            <p>Clean cut, however you like to wear it.</p>
+                            <span class="service-tag">Cut</span>
+                        </article>
+                        <article class="service-card">
+                            <span class="service-index">02</span>
+                            <h3>Skin Fade</h3>
+                            <p>Low, mid, or high. Clean fade work.</p>
+                            <span class="service-tag">Fade</span>
+                        </article>
+                        <article class="service-card">
+                            <span class="service-index">03</span>
+                            <h3>Beard Trim</h3>
+                            <p>Quick cleanup and shape up.</p>
+                            <span class="service-tag">Beard</span>
+                        </article>
+                        <article class="service-card">
+                            <span class="service-index">04</span>
+                            <h3>Full Service</h3>
+                            <p>Cut and beard trim in one appointment.</p>
+                            <span class="service-tag">Full</span>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="section-heading reveal">
+                        <span class="section-tag">Gallery</span>
+                        <h2>Recent work</h2>
+                        <p>Some recent cuts and before and after shots.</p>
+                    </div>
+                    <div class="gallery-wrap reveal">
+                        <div class="gallery-simple">
+                            <figure class="gallery-item">
+                                <img src="Images/Good haircut.png" alt="Recent haircut by Vassilios Pana" loading="lazy">
+                                <figcaption class="gallery-caption"><span>Recent cut</span></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="Images/Good haircut2.png" alt="Low taper haircut by Vassilios Pana" loading="lazy">
+                                <figcaption class="gallery-caption"><span>Low taper</span></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="Images/Good haircut3.png" alt="Mid fade haircut by Vassilios Pana" loading="lazy">
+                                <figcaption class="gallery-caption"><span>Mid fade</span></figcaption>
+                            </figure>
+                        </div>
+                        <div class="gallery-pairs">
+                            <figure class="pair-card">
+                                <div class="pair-images">
+                                    <div class="pair-shot"><img src="Images/Before.png" alt="Before haircut photo" loading="lazy"></div>
+                                    <div class="pair-shot"><img src="Images/After.png" alt="After haircut photo" loading="lazy"></div>
+                                </div>
+                                <figcaption class="pair-labels"><span>Before</span><span>After</span></figcaption>
+                            </figure>
+                            <figure class="pair-card">
+                                <div class="pair-images">
+                                    <div class="pair-shot"><img src="Images/Before1.png" alt="Before haircut photo" loading="lazy"></div>
+                                    <div class="pair-shot"><img src="Images/After1.png" alt="After haircut photo" loading="lazy"></div>
+                                </div>
+                                <figcaption class="pair-labels"><span>Before</span><span>After</span></figcaption>
+                            </figure>
+                            <figure class="pair-card">
+                                <div class="pair-images">
+                                    <div class="pair-shot"><img src="Images/Before2.png" alt="Before haircut photo" loading="lazy"></div>
+                                    <div class="pair-shot"><img src="Images/After2.png" alt="After haircut photo" loading="lazy"></div>
+                                </div>
+                                <figcaption class="pair-labels"><span>Before</span><span>After</span></figcaption>
+                            </figure>
+                            <figure class="pair-card">
+                                <div class="pair-images">
+                                    <div class="pair-shot"><img src="Images/Before3.png" alt="Before haircut photo" loading="lazy"></div>
+                                    <div class="pair-shot"><img src="Images/After3.png" alt="After haircut photo" loading="lazy"></div>
+                                </div>
+                                <figcaption class="pair-labels"><span>Before</span><span>After</span></figcaption>
+                            </figure>
+                            <figure class="pair-card">
+                                <div class="pair-images">
+                                    <div class="pair-shot"><img src="Images/Before4.png" alt="Before haircut photo" loading="lazy"></div>
+                                    <div class="pair-shot"><img src="Images/After4.png" alt="After haircut photo" loading="lazy"></div>
+                                </div>
+                                <figcaption class="pair-labels"><span>Before</span><span>After</span></figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="about-grid reveal">
+                        <div class="about-copy">
+                            <span class="section-tag">About</span>
+                            <h2>About</h2>
+                            <p>I'm based in Ashburn. Just focused on clean, consistent work.</p>
+                            <p>Nothing crazy. Just good cuts and attention to detail.</p>
+                            <div class="about-quote">If you want to book, use the link and pick a time.</div>
+                        </div>
+                        <aside class="about-panel">
+                            <h3>Quick info</h3>
+                            <ul class="about-list">
+                                <li>
+                                    <strong>Based in Ashburn</strong>
+                                    <span>Serving local clients in the DMV area.</span>
+                                </li>
+                                <li>
+                                    <strong>Bookings</strong>
+                                    <span>Use Booksy.</span>
+                                </li>
+                                <li>
+                                    <strong>Phone</strong>
+                                    <span>571-577-1157</span>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="faq-grid reveal">
+                        <div>
+                            <div class="section-heading">
+                                <span class="section-tag">FAQ</span>
+                                <h2>FAQ</h2>
+                                <p>Quick answers.</p>
+                            </div>
+                            <div class="faq-list">
+                                <details open>
+                                    <summary>How do I book?</summary>
+                                    <div class="faq-answer">Use the Booksy link.</div>
+                                </details>
+                                <details>
+                                    <summary>Do you accept walk-ins?</summary>
+                                    <div class="faq-answer">Sometimes, but booking is better.</div>
+                                </details>
+                                <details>
+                                    <summary>Where are you located?</summary>
+                                    <div class="faq-answer">Ashburn, Virginia.</div>
+                                </details>
+                                <details>
+                                    <summary>What payments do you take?</summary>
+                                    <div class="faq-answer">Cash and common payment apps work best.</div>
+                                </details>
+                                <details>
+                                    <summary>How do I contact you?</summary>
+                                    <div class="faq-answer">Call <a href="tel:5715771157">571-577-1157</a>.</div>
+                                </details>
+                            </div>
+                        </div>
+
+                        <aside class="faq-panel">
+                            <h3>Need a time?</h3>
+                            <p>Book online or call.</p>
+                            <div class="contact-lines">
+                                <div class="contact-line">
+                                    <small>Booking</small>
+                                    <span>Use the Booksy link</span>
+                                </div>
+                                <div class="contact-line">
+                                    <small>Phone</small>
+                                    <span>571-577-1157</span>
+                                </div>
+                                <div class="contact-line">
+                                    <small>Location</small>
+                                    <span>Ashburn, Virginia</span>
+                                </div>
+                            </div>
+                            <a class="btn btn-primary" href="https://tinyurl.com/vpcutz" target="_blank" rel="noreferrer">Book</a>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container">
+                    <div class="cta-section reveal">
+                        <span class="section-tag">Book</span>
+                        <h2>Ready for your next cut?</h2>
+                        <p>Book your cut.</p>
+                        <div class="cta-actions">
+                            <a class="btn btn-primary" href="https://tinyurl.com/vpcutz" target="_blank" rel="noreferrer">Book</a>
+                            <a class="btn btn-secondary" href="tel:5715771157">Call 571-577-1157</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-bar">
+                    <span>Vassilios Pana / vpana_cutz / Ashburn, Virginia</span>
+                    <span>Book through Booksy</span>
+                </div>
+            </div>
+        </footer>
+
+        <div class="mobile-bar" aria-label="Mobile booking actions">
+            <a class="btn btn-primary" href="https://tinyurl.com/vpcutz" target="_blank" rel="noreferrer">Book</a>
+            <a class="btn btn-secondary" href="tel:5715771157">Call Now</a>
+        </div>
+    </div>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Barbershop",
+            "name": "Vassilios Pana",
+            "alternateName": "vpana_cutz",
+            "telephone": "+1-571-577-1157",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ashburn",
+                "addressRegion": "VA",
+                "addressCountry": "US"
+            },
+            "url": "https://tinyurl.com/vpcutz",
+            "sameAs": [
+                "https://tinyurl.com/vpcutz"
+            ],
+            "description": "Barber in Ashburn, Virginia offering cuts, fades, beard trims, and online booking."
+        }
+    </script>
+</body>
+</html>
