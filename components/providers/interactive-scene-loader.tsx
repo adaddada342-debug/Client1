@@ -1,26 +1,27 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { lazy, Suspense } from "react";
 
-const InteractiveSceneSection = dynamic(
-  () =>
-    import("@/sections/interactive-scene-section").then((mod) => ({
-      default: mod.InteractiveSceneSection,
-    })),
-  {
-    ssr: false,
-    loading: () => (
-      <section className="section-shell">
-        <div className="container">
-          <div className="glass-panel flex min-h-[480px] items-center justify-center rounded-[8px] px-8 py-6 text-sm uppercase tracking-[0.28em] text-white/55">
-            Loading monument
-          </div>
-        </div>
-      </section>
-    ),
-  },
+const InteractiveSceneSection = lazy(() =>
+  import("@/sections/interactive-scene-section").then((mod) => ({
+    default: mod.InteractiveSceneSection,
+  })),
 );
 
 export function InteractiveSceneLoader() {
-  return <InteractiveSceneSection />;
+  return (
+    <Suspense
+      fallback={
+        <section className="section-shell">
+          <div className="container">
+            <div className="glass-panel flex min-h-[480px] items-center justify-center rounded-[8px] px-8 py-6 text-sm uppercase tracking-[0.28em] text-white/55">
+              Loading monument
+            </div>
+          </div>
+        </section>
+      }
+    >
+      <InteractiveSceneSection />
+    </Suspense>
+  );
 }
