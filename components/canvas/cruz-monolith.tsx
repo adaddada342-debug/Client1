@@ -18,8 +18,8 @@ type CruzFigureProps = {
 function CruzFigure({ pulseSignal = 0 }: CruzFigureProps) {
   const group = useRef<Group>(null);
   const core = useRef<Mesh>(null);
-  const pulse = useRef(0);
-  const previousPulse = useRef(pulseSignal);
+  const lastPulse = useRef(0);
+  const ringRefs = useRef<Array<Mesh | null>>([]);
 
   const rings = useMemo(
     () =>
@@ -33,14 +33,14 @@ function CruzFigure({ pulseSignal = 0 }: CruzFigureProps) {
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
+    const elapsed = Math.max(0, pulseSignal - lastPulse.current);
+    const pulseLevel = Math.max(0, 1 - elapsed / 800);
 
-    if (pulseSignal !== previousPulse.current) {
-      pulse.current = 1;
-      previousPulse.current = pulseSignal;
+    if (pulseSignal > lastPulse.current) {
+      lastPulse.current = pulseSignal;
     }
 
-    pulse.current = Math.max(0, pulse.current - 0.025);
-    const pulseStrength = 1 + pulse.current * 0.22;
+    const pulseStrength = 1 + pulseLevel * 0.22;
 
     if (group.current) {
       group.current.rotation.y = Math.sin(t * 0.2) * 0.18;
@@ -49,10 +49,30 @@ function CruzFigure({ pulseSignal = 0 }: CruzFigureProps) {
     }
 
     if (core.current) {
-      core.current.rotation.y += 0.0035 + pulse.current * 0.01;
+      core.current.rotation.y += 0.0035 + pulseLevel * 0.01;
       core.current.rotation.x = Math.sin(t * 0.3) * 0.08;
-      core.current.scale.setScalar(1 + pulse.current * 0.1);
+      core.current.scale.setScalar(1 + pulseLevel * 0.1);
+
+      const coreMaterial = core.current.material as {
+        emissiveIntensity?: number;
+        distort?: number;
+        speed?: number;
+      };
+
+      coreMaterial.emissiveIntensity = 0.45 + pulseLevel * 0.8;
+      coreMaterial.distort = 0.18 + pulseLevel * 0.1;
+      coreMaterial.speed = 1.5 + pulseLevel * 2;
     }
+
+    ringRefs.current.forEach((ring, index) => {
+      if (!ring) {
+        return;
+      }
+
+      ring.scale.setScalar(rings[index].scale * (1 + pulseLevel * 0.18));
+      const ringMaterial = ring.material as { emissiveIntensity?: number };
+      ringMaterial.emissiveIntensity = 0.3 + pulseLevel * 0.5;
+    });
   });
 
   return (
@@ -63,11 +83,11 @@ function CruzFigure({ pulseSignal = 0 }: CruzFigureProps) {
           <MeshDistortMaterial
             color="#d9d1c0"
             emissive="#6f79ff"
-            emissiveIntensity={0.45 + pulse.current * 0.8}
+            emissiveIntensity={0.45}
             roughness={0.18}
             metalness={0.78}
-            distort={0.18 + pulse.current * 0.1}
-            speed={1.5 + pulse.current * 2}
+            distort={0.18}
+            speed={1.5}
           />
         </mesh>
       </Float>
@@ -84,15 +104,18 @@ function CruzFigure({ pulseSignal = 0 }: CruzFigureProps) {
       {rings.map((ring, index) => (
         <mesh
           key={index}
+          ref={(node) => {
+            ringRefs.current[index] = node;
+          }}
           rotation={[Math.PI / 2 + index * 0.25, ring.rotation, 0]}
           position={[0, ring.y, 0]}
-          scale={ring.scale * pulseStrength}
+          scale={ring.scale}
         >
           <torusGeometry args={[1.18, 0.025, 24, 120]} />
           <meshStandardMaterial
             color={index === 1 ? "#9ea7ff" : "#6e76bc"}
             emissive="#6570ff"
-            emissiveIntensity={0.3 + pulse.current * 0.5}
+            emissiveIntensity={0.3}
             transparent
             opacity={0.72 - index * 0.16}
           />
@@ -102,8 +125,8 @@ function CruzFigure({ pulseSignal = 0 }: CruzFigureProps) {
       <Sparkles
         count={48}
         scale={[5, 5, 5]}
-        size={2.2 + pulse.current * 2}
-        speed={0.3 + pulse.current * 0.7}
+        size={2.2}
+        speed={0.3}
         color="#8f9dff"
         noise={0.8}
       />

@@ -1,10 +1,10 @@
 "use client";
 
-import { forwardRef, type HTMLAttributes } from "react";
-import { motion } from "framer-motion";
+import { forwardRef } from "react";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/utils/cn";
 
-type GlassCardProps = HTMLAttributes<HTMLDivElement> & {
+type GlassCardProps = HTMLMotionProps<"div"> & {
   hover?: boolean;
 };
 

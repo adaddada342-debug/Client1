@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { feats } from "@/lib/site-data";
@@ -31,17 +31,19 @@ export function FeatsSection() {
     [],
   );
 
-  useMemo(() => {
+  useEffect(() => {
     if (typeof window === "undefined") {
-      return null;
+      return undefined;
     }
 
-    const ctx = gsap.context(() => {
-      cardRefs.current.forEach((card, index) => {
-        if (!card) {
-          return;
-        }
+    const scope = rootRef.current;
+    if (!scope) {
+      return undefined;
+    }
 
+    const cards = cardRefs.current.filter((card): card is HTMLDivElement => Boolean(card));
+    const ctx = gsap.context(() => {
+      cards.forEach((card, index) => {
         gsap.fromTo(
           card,
           {
@@ -66,7 +68,7 @@ export function FeatsSection() {
           },
         );
       });
-    }, rootRef);
+    }, scope);
 
     return () => ctx.revert();
   }, []);

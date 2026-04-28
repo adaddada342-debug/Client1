@@ -1,0 +1,3 @@
+module.exports=[63588,a=>{"use strict";var b=a.i(7997);a.s(["default",0,function(){return(0,b.jsx)("main",{className:"flex min-h-screen items-center justify-center px-6",children:(0,b.jsxs)("div",{className:"flex flex-col items-center gap-5 text-center",children:[(0,b.jsx)("div",{className:"h-16 w-16 animate-spin rounded-full border border-white/10 border-t-white/60"}),(0,b.jsxs)("div",{className:"space-y-2",children:[(0,b.jsx)("p",{className:"text-[0.72rem] uppercase tracking-[0.38em] text-white/45",children:"Summoning Cruz"}),(0,b.jsx)("p",{className:"text-sm text-white/60",children:"Preparing the myth, the weight, the wake."})]})]})})}])},45538,a=>{a.n(a.i(63588))}];
+
+//# sourceMappingURL=app_loading_tsx_05semg5._.js.map

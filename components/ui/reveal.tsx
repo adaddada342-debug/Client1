@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { HTMLAttributes, ReactNode } from "react";
+import { motion, type HTMLMotionProps } from "framer-motion";
+import type { ReactNode } from "react";
 
 import { cn } from "@/utils/cn";
 
-type RevealProps = HTMLAttributes<HTMLDivElement> & {
+type RevealProps = Omit<HTMLMotionProps<"div">, "children"> & {
   children: ReactNode;
   delay?: number;
   y?: number;
