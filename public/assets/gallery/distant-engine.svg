@@ -1,0 +1,32 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1500" fill="#0A0D10"/>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <ellipse cx="735" cy="1180" rx="450" ry="220" fill="url(#glow)" opacity="0.9"/>
+  <rect x="420" y="310" width="360" height="760" rx="8" fill="url(#core)" stroke="rgba(255,255,255,0.18)"/>
+  <rect x="492" y="195" width="216" height="190" rx="8" fill="url(#head)" stroke="rgba(255,255,255,0.15)"/>
+  <path d="M405 1190C512 1092 672 1074 807 1168" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+  <circle cx="600" cy="505" r="120" fill="url(#halo)" opacity="0.86"/>
+  <defs>
+    <linearGradient id="bg" x1="600" y1="0" x2="600" y2="1500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14191D"/>
+      <stop offset="0.52" stop-color="#344041"/>
+      <stop offset="1" stop-color="#8BA188"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(735 1180) rotate(90) scale(240 420)">
+      <stop stop-color="#E4F4D2" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#E4F4D2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="core" x1="600" y1="310" x2="600" y2="1070" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(255,255,255,0.22)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.06)"/>
+    </linearGradient>
+    <linearGradient id="head" x1="600" y1="195" x2="600" y2="385" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(252,245,218,0.42)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.12)"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 505) rotate(90) scale(140)">
+      <stop stop-color="#FBF3D5" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#FBF3D5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
