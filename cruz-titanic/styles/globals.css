@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────
+   THE 400LBS BEEF TITANIC — design tokens
+   Cinematic, restrained, intentional. No neon.
+   ────────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #05060a;
+  --surface: #0a0c12;
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #f6f5f1;
+  --muted: #a8a397;
+  --ember: #e98a4b;
+
+  /* Layer depths */
+  --z-fg: 30;
+  --z-mg: 20;
+  --z-bg: 10;
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    @apply font-sans bg-ink-950 text-bone-50 antialiased;
+    background:
+      radial-gradient(60% 40% at 50% 0%, rgba(233, 138, 75, 0.06), transparent 60%),
+      radial-gradient(50% 60% at 100% 100%, rgba(120, 140, 200, 0.05), transparent 60%),
+      var(--bg);
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "ss02", "cv11";
+  }
+
+  ::selection {
+    background: rgba(244, 178, 124, 0.22);
+    color: #fff;
+  }
+
+  /* Custom scrollbar — minimal */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.12); }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tightest;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  button { font-family: inherit; }
+}
+
+@layer components {
+  /* Section container — generous, intentional spacing */
+  .section {
+    @apply relative w-full px-6 md:px-10 lg:px-16;
+  }
+
+  .container-x {
+    @apply mx-auto w-full max-w-[1280px];
+  }
+
+  /* Glass surface — subtle, not overused */
+  .glass {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.045) 0%,
+      rgba(255, 255, 255, 0.018) 100%
+    );
+    border: 1px solid var(--line);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  }
+
+  .glass-strong {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.025) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+  }
+
+  /* Hairline divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent
+    );
+  }
+
+  /* Eyebrow text */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.28em] text-bone-300/70;
+  }
+
+  /* Display headline */
+  .display-xl {
+    @apply font-display tracking-crush leading-[0.92];
+    font-size: clamp(2.75rem, 9vw, 8rem);
+    font-weight: 500;
+  }
+  .display-lg {
+    @apply font-display tracking-crush leading-[0.95];
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 500;
+  }
+  .display-md {
+    @apply font-display tracking-tightest leading-[1.02];
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    font-weight: 500;
+  }
+
+  /* Body text rhythm */
+  .body-lg {
+    @apply text-bone-200/80 leading-relaxed;
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+  }
+
+  /* Numeric display (mono) */
+  .num {
+    @apply font-mono tabular-nums tracking-tight;
+  }
+
+  /* Subtle floating glow — used sparingly */
+  .glow-ember {
+    box-shadow:
+      0 0 0 1px rgba(233, 138, 75, 0.16),
+      0 30px 80px -20px rgba(233, 138, 75, 0.18);
+  }
+
+  /* Grain overlay */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/cruz/grain.svg");
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+  }
+  .mask-fade-t {
+    mask-image: linear-gradient(0deg, #000 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(0deg, #000 60%, transparent 100%);
+  }
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .will-paint { will-change: transform, opacity; }
+
+  /* Reduced motion respect */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Smooth, subtle font loading swap */
+.font-loading body { opacity: 0; }
