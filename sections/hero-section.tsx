@@ -1,11 +1,17 @@
 "use client";
 
+import { Suspense, lazy } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-import { CruzMonolith } from "@/components/canvas/cruz-monolith";
 import { DisplayCopy } from "@/components/ui/display-copy";
 import { Pill } from "@/components/ui/pill";
 import { heroStats } from "@/lib/site-data";
+
+const CruzMonolith = lazy(() =>
+  import("@/components/canvas/cruz-monolith").then((mod) => ({
+    default: mod.CruzMonolith,
+  })),
+);
 
 export function HeroSection() {
   const { scrollYProgress } = useScroll();
@@ -92,7 +98,15 @@ export function HeroSection() {
         >
           <div className="absolute inset-x-[14%] bottom-10 h-20 rounded-full bg-white/10 blur-3xl" />
           <div className="absolute inset-0 rounded-[8px] border border-white/8 bg-white/[0.02]" />
-          <CruzMonolith />
+          <Suspense
+            fallback={
+              <div className="flex min-h-[420px] w-full items-center justify-center">
+                <div className="h-28 w-28 rounded-full border border-white/10 bg-white/[0.03] blur-[1px]" />
+              </div>
+            }
+          >
+            <CruzMonolith />
+          </Suspense>
         </motion.div>
       </div>
     </section>
